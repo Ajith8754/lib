@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Library Genre Display</title>
+  <style>
+    
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+    }
+    h2 {
+      margin-bottom: 10px;
+    }
+    select {
+      padding: 8px;
+      font-size: 16px;
+    }
+    .genre-info {
+      display: none;
+      margin-top: 20px;
+    }
+    .genre-info h3 {
+      margin-bottom: 10px;
+    }
+    .genre-info p {
+      margin-bottom: 15px;
+    }
+    .genre-info a {
+      display: block;
+      text-decoration: none;
+      color: blue;
+    }
+  </style>
+</head>
+<body>
+ <center> <h2>Library Management </h2>
+  <select id="genreSelect" onchange="displayGenreInfo()">
+    <option value="">Select books</option>
+    <option value="war">war</option>
+    <option value="ScienceFiction">Science Fiction</option>
+    <option value="games">games</option>
+  
+  </select>
+
+  <div class="genre-info" id="genreInfo">
+    <h3 id="genreTitle"></h3>
+    <p id="genreDescription"></p>
+    <a id="genreLink" href="#" target="_blank">Wikipedia Link</a>
+  </div>
+
+  <script>
+    function displayGenreInfo() {
+      var select = document.getElementById("genreSelect");
+      var genre = select.options[select.selectedIndex].value;
+      var genreTitle = document.getElementById("genreTitle");
+      var genreDescription = document.getElementById("genreDescription");
+      var genreLink = document.getElementById("genreLink");
+      var genreInfo = document.getElementById("genreInfo");
+
+      if (genre !== "") {
+        genreInfo.style.display = "block";
+
+        
+        switch (genre) {
+          case "war":
+            genreTitle.textContent = "war";
+            genreDescription.textContent = "This article is about war in general. For other uses, see War (disambiguation), The War (disambiguation), and Warring disambiguation.";
+            genreLink.href = "https://en.wikipedia.org/wiki/War";
+            break;
+          case "ScienceFiction":
+            genreTitle.textContent = "Science Fiction Genre";
+            genreDescription.textContent = "Science fiction is a genre that explores imaginative and futuristic concepts often based on scientific principles.";
+            genreLink.href = "https://en.wikipedia.org/wiki/Science_fiction";
+            break;
+
+          case "games":
+            genreTitle.textContent = "games";
+            genreDescription.textContent = "Through the 1950s and 1960s the majority of early computer games ran on university mainframe computers in the United States";
+            genreLink.href = "https://www.amazon.in/Books-Game/s?rh=n%3A976389031%2Cp_27%3AGame";
+            break; 
+         
+          default:
+            break;
+        }
+      } else {
+        genreInfo.style.display = "none";
+      }
+    }
+  </script></center>
+</body>
+</html>
